@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/vTvDailyWeatherItem"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginLeft="@dimen/dp_8"
+    android:layout_marginRight="@dimen/dp_8"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/vTvWeekDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:textColor="@color/black"
+        android:text="@string/today"/>
+
+    <ImageView
+        android:id="@+id/vIvWeatherIcon"
+        android:layout_width="@dimen/dp_36"
+        android:layout_height="@dimen/dp_36"
+        tools:background="@drawable/ic_sunny"
+        android:layout_marginTop="@dimen/dp_12" />
+
+    <TextView
+        android:id="@+id/vTvTemperatureDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:textColor="@color/black"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="@string/_4_u00b0_4_u00b0"/>
+
+</LinearLayout>

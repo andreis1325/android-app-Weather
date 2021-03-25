@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="minsk">Минск</string>
+    <string name="date">ср, 24 марта 15:37</string>
+    <string name="temperature">4\u00B0</string>
+    <string name="feels_like">Ощущается как 4\u00B0</string>
+    <string name="sunny">Солнечно</string>
+    <string name="sunrise">Восход</string>
+    <string name="_00_00">00:00</string>
+    <string name="sunset">Закат</string>
+    <string name="_19_31">19:31</string>
+    <string name="humidity">Влажность</string>
+    <string name="_0">0</string>
+    <string name="wind_speed">Скорость воздуха</string>
+    <string name="_3_74">3.74</string>
+    <string name="today">Сегодня</string>
+    <string name="_4_u00b0_4_u00b0">4°/-4°</string>
+</resources>
