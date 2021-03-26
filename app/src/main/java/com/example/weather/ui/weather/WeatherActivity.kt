@@ -8,15 +8,20 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
+import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur
 import com.example.weather.R
 import com.example.weather.net.responses.DailyWeatherModel
 import com.example.weather.ui.base.BaseMvpActivity
 import com.example.weather.ui.weather.dailyweatheradapter.DailyWeatherAdapter
 import com.example.weather.utils.extensions.finishRefresh
+import com.example.weather.utils.extensions.gone
 import com.example.weather.utils.extensions.startRefresh
+import com.example.weather.utils.extensions.visible
 import kotlinx.android.synthetic.main.activity_weather.*
 
 class WeatherActivity : BaseMvpActivity(), WeatherView, LocationListener {
@@ -26,20 +31,32 @@ class WeatherActivity : BaseMvpActivity(), WeatherView, LocationListener {
 
     private lateinit var dailyWeatherAdapter: DailyWeatherAdapter
     private lateinit var locationManager: LocationManager
+    private var backPressedTime: Long = 0
 
     override fun getLayoutId(): Int = R.layout.activity_weather
 
     companion object {
         private const val MIN_TIME_TO_UPDATE: Long = 0
         private const val MIN_DISTANCE_TO_UPDATE = 0f
+        private const val EXIT_TIME: Int = 2000
+        private const val BLUR_RADIUS = 10f
     }
 
     override fun onCreateActivity(savedInstanceState: Bundle?) {
         initLocationManager()
         initDailyWeatherAdapter()
         getLocation()
-        initOnRefreshListener()
+        initOnActionListeners()
         weatherPresenter.onCreate(dailyWeatherAdapter.dailyWeatherClickObservable)
+    }
+
+     private fun showBlur() {
+
+        vBvDailyWeather.setupWith(vFlRoot)
+            .setFrameClearDrawable(window.decorView.background)
+            .setBlurAlgorithm(SupportRenderScriptBlur(this))
+            .setBlurRadius(BLUR_RADIUS)
+            .setBlurEnabled(true)
     }
 
     private fun initLocationManager() {
@@ -59,11 +76,13 @@ class WeatherActivity : BaseMvpActivity(), WeatherView, LocationListener {
             updateLocation()
     }
 
-    private fun initOnRefreshListener() {
+    private fun initOnActionListeners() {
 
         vSrlRefreshWeather.setOnRefreshListener {
             weatherPresenter.onWeatherRefreshed()
         }
+
+        vLlExtendedDailyWeather.setOnClickListener{}
     }
 
     private fun isLocationPermissionsGranted(): Boolean {
@@ -98,6 +117,10 @@ class WeatherActivity : BaseMvpActivity(), WeatherView, LocationListener {
             MIN_DISTANCE_TO_UPDATE,
             this
         )
+    }
+
+    override fun onBackPressed() {
+        weatherPresenter.onBackClicked(isVisible = vLlExtendedDailyWeather.visibility != View.GONE)
     }
 
     override fun updateWeatherInfoAndFinishRefresh(
@@ -136,6 +159,35 @@ class WeatherActivity : BaseMvpActivity(), WeatherView, LocationListener {
     override fun updateWeatherAndStartRefresh() {
         vSrlRefreshWeather.startRefresh()
         getLocation()
+    }
+
+    override fun openExtendedDailyWeatherAndShowBlur(sunrise: String, sunset: String) {
+
+        vTvDailySunrise.text = sunrise
+        vTvDailySunset.text = sunset
+
+        vLlExtendedDailyWeather.visible()
+        showBlur()
+    }
+
+    override fun closeExtendedDailyWeatherAndHideBlur() {
+        vLlExtendedDailyWeather.gone()
+        hideBlur()
+    }
+
+    override fun exitOrShowMessage() {
+
+        if (backPressedTime + EXIT_TIME > System.currentTimeMillis()) {
+            super.onBackPressed()
+        } else {
+            Toast.makeText(this, getString(R.string.exit_hint), Toast.LENGTH_SHORT).show()
+        }
+        backPressedTime = System.currentTimeMillis()
+    }
+
+    private fun hideBlur() {
+
+        vBvDailyWeather.setBlurEnabled(false)
     }
 
     private fun setDailyWeatherAdapter(dailyForecastWeather: MutableList<DailyWeatherModel>) {

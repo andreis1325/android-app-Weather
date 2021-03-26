@@ -20,4 +20,7 @@ interface WeatherView: BaseMvpView {
     )
 
     fun updateWeatherAndStartRefresh()
+    fun openExtendedDailyWeatherAndShowBlur(sunrise: String, sunset: String)
+    fun closeExtendedDailyWeatherAndHideBlur()
+    fun exitOrShowMessage()
 }

@@ -1,286 +1,327 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/vSrlRefreshWeather"
+    android:id="@+id/vFlRoot"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+
+        android:id="@+id/vSrlRefreshWeather"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/blue">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".ui.weather.WeatherActivity">
+            android:background="@color/blue">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dp_32"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/dp_20"
-                    android:layout_height="@dimen/dp_20"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@drawable/ic_location" />
-
-                <TextView
-                    android:id="@+id/vTvCity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_20"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/vTvDate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_8"
-                android:gravity="center"
-                android:textColor="@color/dark_white"
-                android:textSize="@dimen/sp_16" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dp_30"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/vIvWeatherIcon"
-                    android:layout_width="@dimen/dp_100"
-                    android:layout_height="@dimen/dp_100"
-                    android:layout_gravity="center" />
-
-                <TextView
-                    android:id="@+id/vTvTemperature"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_80" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/vTvTemperatureFeelLike"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_20"
-                android:gravity="center"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/vTvDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_4"
-                android:gravity="center"
-                android:textColor="@color/white" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_40"
-                app:cardBackgroundColor="@color/light_blue"
-                app:cardCornerRadius="@dimen/dp_20">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context=".ui.weather.WeatherActivity">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingLeft="@dimen/dp_40"
-                    android:paddingRight="@dimen/dp_40">
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp_32"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <ImageView
+                        android:layout_width="@dimen/dp_20"
+                        android:layout_height="@dimen/dp_20"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/ic_location" />
+
+                    <TextView
+                        android:id="@+id/vTvCity"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingTop="@dimen/dp_14"
-                        android:paddingBottom="@dimen/dp_14">
-
-                        <ImageView
-                            android:layout_width="@dimen/dp_20"
-                            android:layout_height="@dimen/dp_20"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic_sunrise" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dp_10"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:text="@string/sunrise"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/sp_20" />
-
-                        <TextView
-                            android:id="@+id/vTvSunriseTime"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="right"
-                            android:text="@string/_00_00"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/sp_20"
-                            tools:ignore="RtlHardcoded" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_1"
-                        android:background="@color/dark_white" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingTop="@dimen/dp_14"
-                        android:paddingBottom="@dimen/dp_14">
-
-                        <ImageView
-                            android:layout_width="@dimen/dp_20"
-                            android:layout_height="@dimen/dp_20"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic_sunset" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dp_10"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:text="@string/sunset"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/sp_20" />
-
-                        <TextView
-                            android:id="@+id/vTvSunsetTime"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="right"
-                            android:text="@string/_00_00"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/sp_20"
-                            tools:ignore="RtlHardcoded" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_1"
-                        android:background="@color/dark_white" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingTop="@dimen/dp_14"
-                        android:paddingBottom="@dimen/dp_14">
-
-                        <ImageView
-                            android:layout_width="@dimen/dp_20"
-                            android:layout_height="@dimen/dp_20"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic_humidity" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dp_10"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:text="@string/humidity"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/sp_20" />
-
-                        <TextView
-                            android:id="@+id/vTvHumidity"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="right"
-                            android:text="@string/_0"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/sp_20"
-                            tools:ignore="RtlHardcoded" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_1"
-                        android:background="@color/dark_white" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingTop="@dimen/dp_14"
-                        android:paddingBottom="@dimen/dp_14">
-
-                        <ImageView
-                            android:layout_width="@dimen/dp_20"
-                            android:layout_height="@dimen/dp_20"
-                            android:layout_gravity="center"
-                            android:background="@drawable/ic_wind" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dp_10"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:text="@string/wind_speed"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/sp_20" />
-
-                        <TextView
-                            android:id="@+id/vTvWindSpeed"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="right"
-                            android:text="@string/_0"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/sp_20"
-                            tools:ignore="RtlHardcoded" />
-
-                    </LinearLayout>
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_20"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/dp_30"
-                app:cardBackgroundColor="@color/light_blue"
-                app:cardCornerRadius="@dimen/dp_20">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/vRvDailyWeather"
+                <TextView
+                    android:id="@+id/vTvDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_20"
-                    android:orientation="horizontal"
-                    android:overScrollMode="never"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_daily_weather" />
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:gravity="center"
+                    android:textColor="@color/dark_white"
+                    android:textSize="@dimen/sp_16" />
 
-            </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/vIvWeatherIcon"
+                        android:layout_width="@dimen/dp_100"
+                        android:layout_height="@dimen/dp_100"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/vTvTemperature"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_80" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/vTvTemperatureFeelLike"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:gravity="center"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/vTvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:gravity="center"
+                    android:textColor="@color/white" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_40"
+                    app:cardBackgroundColor="@color/light_blue"
+                    app:cardCornerRadius="@dimen/dp_20">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/dp_40"
+                        android:paddingRight="@dimen/dp_40">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/dp_14"
+                            android:paddingBottom="@dimen/dp_14">
+
+                            <ImageView
+                                android:layout_width="@dimen/dp_20"
+                                android:layout_height="@dimen/dp_20"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_sunrise" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_10"
+                                android:layout_marginLeft="@dimen/dp_10"
+                                android:text="@string/sunrise"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_20" />
+
+                            <TextView
+                                android:id="@+id/vTvSunriseTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/_00_00"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_20"
+                                tools:ignore="RtlHardcoded" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_1"
+                            android:background="@color/dark_white" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/dp_14"
+                            android:paddingBottom="@dimen/dp_14">
+
+                            <ImageView
+                                android:layout_width="@dimen/dp_20"
+                                android:layout_height="@dimen/dp_20"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_sunset" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_10"
+                                android:layout_marginLeft="@dimen/dp_10"
+                                android:text="@string/sunset"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_20" />
+
+                            <TextView
+                                android:id="@+id/vTvSunsetTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/_00_00"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_20"
+                                tools:ignore="RtlHardcoded" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_1"
+                            android:background="@color/dark_white" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/dp_14"
+                            android:paddingBottom="@dimen/dp_14">
+
+                            <ImageView
+                                android:layout_width="@dimen/dp_20"
+                                android:layout_height="@dimen/dp_20"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_humidity" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_10"
+                                android:layout_marginLeft="@dimen/dp_10"
+                                android:text="@string/humidity"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_20" />
+
+                            <TextView
+                                android:id="@+id/vTvHumidity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/_0"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_20"
+                                tools:ignore="RtlHardcoded" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_1"
+                            android:background="@color/dark_white" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/dp_14"
+                            android:paddingBottom="@dimen/dp_14">
+
+                            <ImageView
+                                android:layout_width="@dimen/dp_20"
+                                android:layout_height="@dimen/dp_20"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_wind" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_10"
+                                android:layout_marginLeft="@dimen/dp_10"
+                                android:text="@string/wind_speed"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_20" />
+
+                            <TextView
+                                android:id="@+id/vTvWindSpeed"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/_0"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_20"
+                                tools:ignore="RtlHardcoded" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp_30"
+                    app:cardBackgroundColor="@color/light_blue"
+                    app:cardCornerRadius="@dimen/dp_20">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/vRvDailyWeather"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_20"
+                        android:orientation="horizontal"
+                        android:overScrollMode="never"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/view_item_daily_weather" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/vBvDailyWeather"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/vLlExtendedDailyWeather"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/vTvDailySunrise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="Восход - 06:57"/>
+
+            <TextView
+                android:id="@+id/vTvDailySunset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="Восход - 06:57"/>
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </eightbitlab.com.blurview.BlurView>
 
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</FrameLayout>

@@ -23,7 +23,9 @@ class WeatherPresenter : BaseMvpPresenter<WeatherView>() {
 
     companion object {
         const val FULL_DATE_FORMAT = "EE, dd MMMM HH:mm"
-        const val TIME_DATE_FORMAT = "HH:mm"
+        const val HH_MM_DATE_FORMAT = "HH:mm"
+        const val SUNRISE = "Восход - "
+        const val SUNSET = "Закат - "
         const val START_ICON_URL = "http://openweathermap.org/img/wn/"
         const val END_ICON_URL = "@2x.png"
         const val DEGREE = "\u00B0"
@@ -42,7 +44,11 @@ class WeatherPresenter : BaseMvpPresenter<WeatherView>() {
 
         addDisposable(
             dailyWeatherClickObservable.subscribe {
-                //viewState.goToExtendedDailyWeth
+
+                viewState.openExtendedDailyWeatherAndShowBlur(
+                    sunrise = SUNRISE.plus(it.sunrise.toDateFormat(HH_MM_DATE_FORMAT)),
+                    sunset = SUNSET.plus(it.sunset.toDateFormat(HH_MM_DATE_FORMAT))
+                )
             }
         )
     }
@@ -80,8 +86,8 @@ class WeatherPresenter : BaseMvpPresenter<WeatherView>() {
             temperature = "${(weather.currentWeather.temp ?: 0.0).roundToInt()}$DEGREE",
             temperatureFeelLike = "$FEEL_LIKE ${(weather.currentWeather.feels_like ?: 0.0).roundToInt()}$DEGREE",
             description = weather.currentWeather.weather?.getOrNull(0)?.description ?: "",
-            sunriseTime = weather.currentWeather.sunrise.toDateFormat(TIME_DATE_FORMAT),
-            sunsetTime = weather.currentWeather.sunset.toDateFormat(TIME_DATE_FORMAT),
+            sunriseTime = weather.currentWeather.sunrise.toDateFormat(HH_MM_DATE_FORMAT),
+            sunsetTime = weather.currentWeather.sunset.toDateFormat(HH_MM_DATE_FORMAT),
             humidity = "${weather.currentWeather.humidity}%",
             windSpeed = "${(weather.currentWeather.wind_speed ?: 0.0).roundToInt()} $SPEED_UNITS",
             dailyForecastWeather = weather.daily
@@ -91,5 +97,13 @@ class WeatherPresenter : BaseMvpPresenter<WeatherView>() {
     fun onWeatherRefreshed() {
 
         viewState.updateWeatherAndStartRefresh()
+    }
+
+    fun onBackClicked(isVisible: Boolean) {
+
+        if(isVisible)
+            viewState.closeExtendedDailyWeatherAndHideBlur()
+        else
+            viewState.exitOrShowMessage()
     }
 }

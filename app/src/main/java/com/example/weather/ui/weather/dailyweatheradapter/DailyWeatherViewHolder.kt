@@ -9,7 +9,7 @@ import com.example.weather.ui.base.BaseViewHolder
 import com.example.weather.ui.weather.WeatherPresenter
 import com.example.weather.utils.extensions.toDateFormat
 import io.reactivex.subjects.PublishSubject
-import kotlinx.android.synthetic.main.item_daily_weather.view.*
+import kotlinx.android.synthetic.main.view_item_daily_weather.view.*
 import kotlin.math.roundToInt
 
 class DailyWeatherViewHolder(

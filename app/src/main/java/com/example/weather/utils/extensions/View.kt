@@ -1,8 +1,19 @@
 package com.example.weather.utils.extensions
 
+import android.view.View
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import java.text.SimpleDateFormat
 import java.util.*
+
+fun View.visible() {
+    if (this.visibility != View.VISIBLE)
+        this.visibility = View.VISIBLE
+}
+
+fun View.gone() {
+    if (this.visibility != View.GONE)
+        this.visibility = View.GONE
+}
 
 fun SwipeRefreshLayout.startRefresh() {
     if (!this.isRefreshing)

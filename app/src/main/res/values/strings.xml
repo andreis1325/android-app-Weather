@@ -15,4 +15,5 @@
     <string name="_3_74">3.74</string>
     <string name="today">Сегодня</string>
     <string name="_4_u00b0_4_u00b0">4°/-4°</string>
+    <string name="exit_hint">Press once again to exit!</string>
 </resources>

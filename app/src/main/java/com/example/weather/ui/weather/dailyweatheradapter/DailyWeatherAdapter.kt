@@ -19,7 +19,7 @@ class DailyWeatherAdapter(weather: MutableList<DailyWeatherModel> = mutableListO
 
         return DailyWeatherViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_daily_weather, parent, false),
+                .inflate(R.layout.view_item_daily_weather, parent, false),
             dailyWeatherClickSubject
         )
     }
